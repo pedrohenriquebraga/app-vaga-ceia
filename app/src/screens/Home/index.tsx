@@ -15,10 +15,12 @@ import { Feather } from "@expo/vector-icons";
 import { MessageCategory, MessageClassifyRes } from "../../types/response";
 import Message from "../../components/Message";
 import api from "../../services/api";
+import { useMessagesStorage } from "../../hooks/useMessagesStorage";
+import Loading from "../../components/Loading";
 
 const Home: React.FC = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<MessageClassifyRes[]>([]);
+  const { messages, loading, addMessage } = useMessagesStorage();
 
   const classifyMessage = async () => {
     if (!message.trim()) {
@@ -35,14 +37,17 @@ const Home: React.FC = () => {
       console.log(res.data)
 
       if (res.status === 200) {
-        setMessages((old) => [...old, {...res.data, text: message}]);
+        await addMessage({...res.data, text: message});
         setMessage("");
       }
     } catch (error) {
       console.error("Erro ao classificar mensagem:", error);
       Alert.alert("Erro ao classificar mensagem. Tente novamente.");
     }
-  } 
+  }
+
+  if (loading)
+    return <Loading />
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
