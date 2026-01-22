@@ -13,7 +13,6 @@ export default StyleSheet.create({
     message_text: {
         flex: 1,
         fontSize: 14,
-        maxWidth: 200
     },
     category: {
         fontSize: 14,

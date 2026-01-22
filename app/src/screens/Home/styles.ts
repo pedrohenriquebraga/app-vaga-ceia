@@ -3,18 +3,26 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
     padding: 12,
-  },
-  message_container: {
-    height: 500,
-    borderWidth: 1,
-    marginVertical: 20,
-    borderColor: "#0088ff",
-    borderRadius: 5,
   },
   presentation_container: {
     alignItems: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  messages_wrapper: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#0088ff",
+    borderRadius: 5,
+    marginBottom: 20,
+    overflow: "hidden",
+  },
+  scroll_view: {
+    flex: 1,
+  },
+  message_container: {
+    paddingBottom: 10,
   },
   title: {
     fontSize: 25,
@@ -24,6 +32,7 @@ export default StyleSheet.create({
     fontSize: 16,
     textAlign: "center",
     marginTop: 5,
+    paddingHorizontal: 20,
   },
   input_container: {
     flexDirection: "row",

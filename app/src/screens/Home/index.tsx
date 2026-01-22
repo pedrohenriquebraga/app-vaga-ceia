@@ -53,30 +53,30 @@ const Home: React.FC = () => {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <Header screenName="Home" />
       <View style={styles.container}>
-        <View style={{ marginTop: 20 }}>
-          <View style={styles.presentation_container}>
-            <Text style={styles.title}>Classifique suas mensagens</Text>
-            <Text style={styles.subtitle}>
-              Escreva sua mensagem no input abaixo e nós classificaremos ela
-              para você
-            </Text>
-          </View>
-          <ScrollView contentContainerStyle={styles.message_container}>
-            <Text style={{ margin: 15, fontWeight: 700 }}>Mensagens Classificadas</Text>
+        <View style={styles.presentation_container}>
+          <Text style={styles.title}>Classifique suas mensagens</Text>
+          <Text style={styles.subtitle}>
+            Escreva sua mensagem no input abaixo e nós classificaremos ela
+            para você
+          </Text>
+        </View>
+        <View style={styles.messages_wrapper}>
+          <Text style={{ margin: 15, fontWeight: 700 }}>Mensagens Classificadas ({messages.length} mensagens)</Text>
+          <ScrollView style={styles.scroll_view} contentContainerStyle={styles.message_container}>
             {messages.map((msg, index) => {
               return <Message message={msg} key={index} />;
             })}
           </ScrollView>
-          <View style={styles.input_container}>
-            <TextInput
-              style={styles.input}
-              onChangeText={setMessage}
-              value={message}
-            />
-            <TouchableOpacity style={styles.send_button} onPress={() => classifyMessage()}>
-              <Feather name="send" color={"#fff"} size={16} />
-            </TouchableOpacity>
-          </View>
+        </View>
+        <View style={styles.input_container}>
+          <TextInput
+            style={styles.input}
+            onChangeText={setMessage}
+            value={message}
+          />
+          <TouchableOpacity style={styles.send_button} onPress={() => classifyMessage()}>
+            <Feather name="send" color={"#fff"} size={16} />
+          </TouchableOpacity>
         </View>
       </View>
     </KeyboardAvoidingView>
