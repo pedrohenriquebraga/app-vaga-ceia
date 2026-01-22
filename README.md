@@ -8,7 +8,7 @@
 - React Native CLI
 - Ambiente React Native configurado
 
-## Setup da API Unicorn
+## Setup da API
 
 ### 1. Iniciar a API
 Inicie como fornecido no anexo enviado na avaliação
@@ -29,6 +29,9 @@ yarn
 ```
 
 ### 2. Executar no Android
+
+Dentro da pasta app, execute o seguinte comando:
+
 ```bash
 npm run android
 ```
